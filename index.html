@@ -1,95 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- TODO: Add a Google Analytics tag here if needed (Ghost-FWL uses gtag.js) -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  
+
   <!-- Primary Meta Tags -->
-  <!-- TODO: Replace with your paper title and author names -->
-  <meta name="title" content="PAPER_TITLE - AUTHOR_NAMES">
-  <!-- TODO: Write a compelling 150-160 character description of your research -->
-  <meta name="description" content="BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS">
-  <!-- TODO: Add 5-10 relevant keywords for your research area -->
-  <meta name="keywords" content="KEYWORD1, KEYWORD2, KEYWORD3, machine learning, computer vision, AI">
-  <!-- TODO: List all authors -->
-  <meta name="author" content="FIRST_AUTHOR_NAME, SECOND_AUTHOR_NAME">
+  <meta name="title" content="Towards Real-Time Full-Waveform LiDAR Transformers via Intensity-Guided Token Reduction and Physics-Aware Augmentation - Kotaro Oishi, Kazuma Ikeda, Ryosei Hara, Ryo Yoshida, Mariko Isogawa, Kentaro Yoshioka">
+  <meta name="description" content="FWL-ToPM prunes and merges tokens using the intensity structure of full-waveform LiDAR, reaching 53.2 FPS (8x faster) with a 9-point F1 gain on Ghost-FWL. FWLAug adds waveform-preserving augmentation that improves generalization to unseen scenes.">
+  <meta name="keywords" content="full-waveform LiDAR, FWL, token pruning, token merging, data augmentation, transformer, ghost detection, LiDAR, real-time, NeurIPS 2026">
+  <meta name="author" content="Kotaro Oishi, Kazuma Ikeda, Ryosei Hara, Ryo Yoshida, Mariko Isogawa, Kentaro Yoshioka">
   <meta name="robots" content="index, follow">
   <meta name="language" content="English">
-  
+
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="article">
-  <!-- TODO: Replace with your institution or lab name -->
-  <meta property="og:site_name" content="INSTITUTION_OR_LAB_NAME">
-  <!-- TODO: Same as paper title above -->
-  <meta property="og:title" content="PAPER_TITLE">
-  <!-- TODO: Same as description above -->
-  <meta property="og:description" content="BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS">
-  <!-- TODO: Replace with your actual website URL -->
-  <meta property="og:url" content="https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE">
-  <!-- TODO: Create a 1200x630px preview image and update path -->
-  <meta property="og:image" content="https://YOUR_DOMAIN.com/static/images/social_preview.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="PAPER_TITLE - Research Preview">
-  <meta property="article:published_time" content="2024-01-01T00:00:00.000Z">
-  <meta property="article:author" content="FIRST_AUTHOR_NAME">
+  <meta property="og:site_name" content="Keio CSG (Keio Computer Science Group) - Keio University">
+  <meta property="og:title" content="Towards Real-Time Full-Waveform LiDAR Transformers via Intensity-Guided Token Reduction and Physics-Aware Augmentation">
+  <meta property="og:description" content="FWL-ToPM prunes and merges tokens using the intensity structure of full-waveform LiDAR, reaching 53.2 FPS (8x faster) with a 9-point F1 gain on Ghost-FWL. FWLAug adds waveform-preserving augmentation that improves generalization to unseen scenes.">
+  <meta property="og:url" content="https://keio-csg.github.io/FWL-ToPM/">
+  <meta property="og:image" content="https://keio-csg.github.io/FWL-ToPM/static/images/method.png">
+  <meta property="og:image:alt" content="Overview of FWL-ToPM and FWLAug">
+  <meta property="article:author" content="Kotaro Oishi">
+  <meta property="article:author" content="Kazuma Ikeda">
   <meta property="article:section" content="Research">
-  <meta property="article:tag" content="KEYWORD1">
-  <meta property="article:tag" content="KEYWORD2">
+  <meta property="article:tag" content="Full-Waveform LiDAR">
+  <meta property="article:tag" content="Token Reduction">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <!-- TODO: Replace with your lab/institution Twitter handle -->
-  <meta name="twitter:site" content="@YOUR_TWITTER_HANDLE">
-  <!-- TODO: Replace with first author's Twitter handle -->
-  <meta name="twitter:creator" content="@AUTHOR_TWITTER_HANDLE">
-  <!-- TODO: Same as paper title above -->
-  <meta name="twitter:title" content="PAPER_TITLE">
-  <!-- TODO: Same as description above -->
-  <meta name="twitter:description" content="BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS">
-  <!-- TODO: Same as social preview image above -->
-  <meta name="twitter:image" content="https://YOUR_DOMAIN.com/static/images/social_preview.png">
-  <meta name="twitter:image:alt" content="PAPER_TITLE - Research Preview">
+  <meta name="twitter:title" content="Towards Real-Time Full-Waveform LiDAR Transformers via Intensity-Guided Token Reduction and Physics-Aware Augmentation">
+  <meta name="twitter:description" content="FWL-ToPM: 53.2 FPS (8x faster) with a 9-point F1 gain for full-waveform LiDAR Transformers. FWLAug: waveform-preserving augmentation for unseen scenes.">
+  <meta name="twitter:image" content="https://keio-csg.github.io/FWL-ToPM/static/images/method.png">
+  <meta name="twitter:image:alt" content="Overview of FWL-ToPM and FWLAug">
 
   <!-- Academic/Research Specific -->
-  <meta name="citation_title" content="PAPER_TITLE">
-  <meta name="citation_author" content="FIRST_AUTHOR_LAST, FIRST_AUTHOR_FIRST">
-  <meta name="citation_author" content="SECOND_AUTHOR_LAST, SECOND_AUTHOR_FIRST">
-  <meta name="citation_publication_date" content="2024">
-  <meta name="citation_conference_title" content="CONFERENCE_NAME">
-  <meta name="citation_pdf_url" content="https://YOUR_DOMAIN.com/static/pdfs/paper.pdf">
-  
+  <meta name="citation_title" content="Towards Real-Time Full-Waveform LiDAR Transformers via Intensity-Guided Token Reduction and Physics-Aware Augmentation">
+  <meta name="citation_author" content="Oishi, Kotaro">
+  <meta name="citation_author" content="Ikeda, Kazuma">
+  <meta name="citation_author" content="Hara, Ryosei">
+  <meta name="citation_author" content="Yoshida, Ryo">
+  <meta name="citation_author" content="Isogawa, Mariko">
+  <meta name="citation_author" content="Yoshioka, Kentaro">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_conference_title" content="Advances in Neural Information Processing Systems (NeurIPS 2026)">
+
   <!-- Additional SEO -->
   <meta name="theme-color" content="#2563eb">
   <meta name="msapplication-TileColor" content="#2563eb">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  
+
   <!-- Preconnect for performance -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://ajax.googleapis.com">
-  <link rel="preconnect" href="https://documentcloud.adobe.com">
   <link rel="preconnect" href="https://cdn.jsdelivr.net">
 
+  <title>FWL-ToPM: Towards Real-Time Full-Waveform LiDAR Transformers | NeurIPS 2026</title>
 
-  <!-- TODO: Replace with your paper title and authors -->
-  <title>PAPER_TITLE - AUTHOR_NAMES | Academic Research</title>
-  
   <!-- Favicon and App Icons -->
-  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
-  <link rel="apple-touch-icon" href="static/images/favicon.ico">
-  
+  <link rel="icon" type="image/x-icon" href="static/favicon/csg-favicon.ico">
+  <link rel="apple-touch-icon" href="static/favicon/csg-favicon.ico">
+
   <!-- Critical CSS - Load synchronously -->
   <link rel="stylesheet" href="static/css/bulma.min.css">
   <link rel="stylesheet" href="static/css/index.css">
-  
+  <link rel="stylesheet" href="static/css/custom.css">
+
   <!-- Non-critical CSS - Load asynchronously -->
   <link rel="preload" href="static/css/bulma-carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <link rel="preload" href="static/css/bulma-slider.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <link rel="preload" href="static/css/fontawesome.all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <link rel="preload" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  
+
   <!-- Fallback for browsers that don't support preload -->
   <noscript>
     <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
@@ -97,89 +79,42 @@
     <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   </noscript>
-  
-  <!-- Fonts - Optimized loading -->
+
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  
+
   <!-- Defer non-critical JavaScript -->
   <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script defer src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
   <script defer src="static/js/fontawesome.all.min.js"></script>
   <script defer src="static/js/bulma-carousel.min.js"></script>
   <script defer src="static/js/bulma-slider.min.js"></script>
   <script defer src="static/js/index.js"></script>
-  
+
   <!-- Structured Data for Academic Papers -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "ScholarlyArticle",
-    "headline": "PAPER_TITLE",
-    "description": "BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS",
+    "headline": "Towards Real-Time Full-Waveform LiDAR Transformers via Intensity-Guided Token Reduction and Physics-Aware Augmentation",
+    "description": "FWL-ToPM prunes and merges tokens using the intensity structure of full-waveform LiDAR, and FWLAug provides waveform-preserving augmentation for generalization to unseen scenes.",
     "author": [
-      {
-        "@type": "Person",
-        "name": "FIRST_AUTHOR_NAME",
-        "affiliation": {
-          "@type": "Organization",
-          "name": "INSTITUTION_NAME"
-        }
-      },
-      {
-        "@type": "Person",
-        "name": "SECOND_AUTHOR_NAME",
-        "affiliation": {
-          "@type": "Organization",
-          "name": "INSTITUTION_NAME"
-        }
-      }
+      { "@type": "Person", "name": "Kotaro Oishi", "affiliation": { "@type": "Organization", "name": "Keio University" } },
+      { "@type": "Person", "name": "Kazuma Ikeda", "affiliation": { "@type": "Organization", "name": "Keio University" } },
+      { "@type": "Person", "name": "Ryosei Hara", "affiliation": { "@type": "Organization", "name": "Keio University" } },
+      { "@type": "Person", "name": "Ryo Yoshida", "affiliation": { "@type": "Organization", "name": "Keio University" } },
+      { "@type": "Person", "name": "Mariko Isogawa", "affiliation": { "@type": "Organization", "name": "Keio University" } },
+      { "@type": "Person", "name": "Kentaro Yoshioka", "affiliation": { "@type": "Organization", "name": "Keio University" } }
     ],
-    "datePublished": "2024-01-01",
-    "publisher": {
-      "@type": "Organization",
-      "name": "CONFERENCE_OR_JOURNAL_NAME"
-    },
-    "url": "https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE",
-    "image": "https://YOUR_DOMAIN.com/static/images/social_preview.png",
-    "keywords": ["KEYWORD1", "KEYWORD2", "KEYWORD3", "machine learning", "computer vision"],
-    "abstract": "FULL_ABSTRACT_TEXT_HERE",
-    "citation": "BIBTEX_CITATION_HERE",
-    "isAccessibleForFree": true,
-    "license": "https://creativecommons.org/licenses/by/4.0/",
-    "mainEntity": {
-      "@type": "WebPage",
-      "@id": "https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE"
-    },
-    "about": [
-      {
-        "@type": "Thing",
-        "name": "RESEARCH_AREA_1"
-      },
-      {
-        "@type": "Thing", 
-        "name": "RESEARCH_AREA_2"
-      }
-    ]
-  }
-  </script>
-  
-  <!-- Website/Organization Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "INSTITUTION_OR_LAB_NAME",
-    "url": "https://YOUR_INSTITUTION_WEBSITE.com",
-    "logo": "https://YOUR_DOMAIN.com/static/images/favicon.ico",
-    "sameAs": [
-      "https://twitter.com/YOUR_TWITTER_HANDLE",
-      "https://github.com/YOUR_GITHUB_USERNAME"
-    ]
+    "datePublished": "2026",
+    "publisher": { "@type": "Organization", "name": "NeurIPS 2026" },
+    "url": "https://keio-csg.github.io/FWL-ToPM/",
+    "image": "https://keio-csg.github.io/FWL-ToPM/static/images/method.png",
+    "keywords": ["full-waveform LiDAR", "token pruning", "token merging", "data augmentation", "transformer", "ghost detection"],
+    "isAccessibleForFree": true
   }
   </script>
 </head>
 <body>
-
 
   <!-- Scroll to Top Button -->
   <button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">
@@ -201,32 +136,35 @@
         </button>
       </div>
       <div class="works-list">
-        <!-- TODO: Replace with your lab's related works -->
-        <a href="https://arxiv.org/abs/PAPER_ID_1" class="work-item" target="_blank">
+        <a href="https://keio-csg.github.io/Ghost-FWL/" class="work-item" target="_blank">
           <div class="work-info">
-            <!-- TODO: Replace with actual paper title -->
-            <h5>Paper Title 1</h5>
-            <!-- TODO: Replace with brief description -->
-            <p>Brief description of the work and its main contribution.</p>
-            <!-- TODO: Replace with venue and year -->
-            <span class="work-venue">Conference/Journal 2024</span>
+            <h5>Ghost-FWL: A Large-Scale Full-Waveform LiDAR Dataset for Ghost Detection and Removal</h5>
+            <p>The first and largest annotated mobile full-waveform LiDAR dataset for ghost detection and removal, with 24K frames across 10 scenes and 7.5 billion peak-level annotations.</p>
+            <span class="work-venue">CVPR 2026</span>
           </div>
           <i class="fas fa-external-link-alt"></i>
         </a>
-        <!-- TODO: Add more related works or remove extra items -->
-        <a href="https://arxiv.org/abs/PAPER_ID_2" class="work-item" target="_blank">
+        <a href="https://sites.google.com/keio.jp/keio-csg/projects/optical-lidar-communication?authuser=0" class="work-item" target="_blank">
           <div class="work-info">
-            <h5>Paper Title 2</h5>
-            <p>Brief description of the work and its main contribution.</p>
-            <span class="work-venue">Conference/Journal 2023</span>
+            <h5>Optical LiDAR Communication: Repurposing Existing LiDAR Sensors for Infrastructure-to-Vehicle Communication</h5>
+            <p>Repurposes existing LiDAR sensors as V2I communication devices by combining LiDAR injection with 2D codes, with no additional hardware on the robot.</p>
+            <span class="work-venue">RA-L 2025</span>
           </div>
           <i class="fas fa-external-link-alt"></i>
         </a>
-        <a href="https://arxiv.org/abs/PAPER_ID_3" class="work-item" target="_blank">
+        <a href="https://sites.google.com/keio.jp/keio-csg/projects/AttackonDrivingVehicle?authuser=0" class="work-item" target="_blank">
           <div class="work-info">
-            <h5>Paper Title 3</h5>
-            <p>Brief description of the work and its main contribution.</p>
-            <span class="work-venue">Conference/Journal 2023</span>
+            <h5>On the Realism of LiDAR Spoofing Attacks against Autonomous Driving Vehicle at High Speed and Long Distance</h5>
+            <p>Demonstrates LiDAR spoofing attacks against a vehicle driving at 60 km/h from 110 meters away, against a vehicle operated by a popular AD stack.</p>
+            <span class="work-venue">NDSS 2025</span>
+          </div>
+          <i class="fas fa-external-link-alt"></i>
+        </a>
+        <a href="https://sites.google.com/keio.jp/keio-csg/projects/new-gen-lidar-sec?authuser=0" class="work-item" target="_blank">
+          <div class="work-info">
+            <h5>LiDAR Spoofing Meets the New-Gen: Capability Improvements, Broken Assumptions, and New Attack Strategies</h5>
+            <p>The first large-scale measurement study of LiDAR spoofing capabilities across 9 popular LiDARs and 3 major types of object detectors.</p>
+            <span class="work-venue">NDSS 2024</span>
           </div>
           <i class="fas fa-external-link-alt"></i>
         </a>
@@ -235,242 +173,432 @@
   </div>
 
   <main id="main-content">
-  <section class="hero">
+  <section class="hero top-hero">
     <div class="hero-body">
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <!-- TODO: Replace with your paper title -->
-            <h1 class="title is-1 publication-title">Academic Project Page</h1>
+            <h1 class="title is-1 publication-title">Towards Real-Time Full-Waveform LiDAR Transformers via Intensity-Guided Token Reduction and Physics-Aware Augmentation</h1>
             <div class="is-size-5 publication-authors">
-              <!-- TODO: Replace with your paper authors and their personal links -->
+              <span class="author-block">Kotaro Oishi<sup>*</sup>,</span>
+              <span class="author-block"><a href="https://ike-kazu.github.io/kazuma-ikeda.github.io/" target="_blank">Kazuma Ikeda</a><sup>*</sup>,</span>
+              <span class="author-block"><a href="https://ryhara.github.io/" target="_blank">Ryosei Hara</a>,</span>
+              <span class="author-block">Ryo Yoshida,</span>
+              <span class="author-block"><a href="https://isogawa.ics.keio.ac.jp/" target="_blank">Mariko Isogawa</a><sup>&dagger;</sup>,</span>
+              <span class="author-block"><a href="https://sites.google.com/keio.jp/keio-csg/home" target="_blank">Kentaro Yoshioka</a><sup>&dagger;</sup></span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
               <span class="author-block">
-                <a href="FIRST AUTHOR PERSONAL LINK" target="_blank">First Author</a><sup>*</sup>,</span>
-                <span class="author-block">
-                  <a href="SECOND AUTHOR PERSONAL LINK" target="_blank">Second Author</a><sup>*</sup>,</span>
-                  <span class="author-block">
-                    <a href="THIRD AUTHOR PERSONAL LINK" target="_blank">Third Author</a>
-                  </span>
-                  </div>
+                Keio University<br>
+                NeurIPS 2026
+              </span>
+              <span class="eql-cntrb"><small><br><sup>*</sup>Equal contribution&nbsp;&nbsp;&nbsp;<sup>&dagger;</sup>Co-corresponding authors</small></span>
+            </div>
 
-                  <div class="is-size-5 publication-authors">
-                    <!-- TODO: Replace with your institution and conference/journal info -->
-                    <span class="author-block">Institution Name<br>Conference name and year</span>
-                    <!-- TODO: Remove this line if no equal contribution -->
-                    <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span>
-                  </div>
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- TODO: Replace href and remove the pending classes once the paper is available -->
+                <span class="link-block link-block-pending">
+                  <a href="#" class="external-link button is-normal is-rounded is-dark is-link-pending" aria-disabled="true">
+                    <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                    <span>Paper (Coming Soon)</span>
+                  </a>
+                </span>
 
-                  <div class="column has-text-centered">
-                    <div class="publication-links">
-                         <!-- TODO: Update with your arXiv paper ID -->
-                      <span class="link-block">
-                        <a href="https://arxiv.org/pdf/<ARXIV PAPER ID>.pdf" target="_blank"
-                        class="external-link button is-normal is-rounded is-dark">
-                        <span class="icon">
-                          <i class="fas fa-file-pdf"></i>
-                        </span>
-                        <span>Paper</span>
-                      </a>
-                    </span>
+                <!-- TODO: Replace href and remove the pending classes once the arXiv version is available -->
+                <span class="link-block link-block-pending">
+                  <a href="#" class="external-link button is-normal is-rounded is-dark is-link-pending" aria-disabled="true">
+                    <span class="icon"><i class="ai ai-arxiv"></i></span>
+                    <span>arXiv (Coming Soon)</span>
+                  </a>
+                </span>
 
-                    <!-- TODO: Add your supplementary material PDF or remove this section -->
-                    <span class="link-block">
-                      <a href="static/pdfs/supplementary_material.pdf" target="_blank"
-                      class="external-link button is-normal is-rounded is-dark">
-                      <span class="icon">
-                        <i class="fas fa-file-pdf"></i>
-                      </span>
-                      <span>Supplementary</span>
-                    </a>
-                  </span>
-
-                  <!-- TODO: Replace with your GitHub repository URL -->
-                  <span class="link-block">
-                    <a href="https://github.com/YOUR REPO HERE" target="_blank"
-                    class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                      <i class="fab fa-github"></i>
-                    </span>
+                <span class="link-block">
+                  <a href="https://github.com/Keio-CSG/FWL-ToPM" target="_blank"
+                  class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fab fa-github"></i></span>
                     <span>Code</span>
                   </a>
                 </span>
 
-                <!-- TODO: Update with your arXiv paper ID -->
-                <span class="link-block">
-                  <a href="https://arxiv.org/abs/<ARXIV PAPER ID>" target="_blank"
-                  class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                    <i class="ai ai-arxiv"></i>
-                  </span>
-                  <span>arXiv</span>
-                </a>
-              </span>
+                <!-- TODO: Replace href and remove the pending classes once the OOD test set is released -->
+                <span class="link-block link-block-pending">
+                  <a href="#" class="external-link button is-normal is-rounded is-dark is-link-pending" aria-disabled="true">
+                    <span class="icon"><i class="fas fa-database"></i></span>
+                    <span>OOD Test Set (Coming Soon)</span>
+                  </a>
+                </span>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
 
-<!-- Teaser video-->
-<section class="hero teaser">
-  <div class="container is-max-desktop">
-    <div class="hero-body">
-      <!-- TODO: Replace with your teaser video -->
-      <video poster="" id="tree" autoplay controls muted loop height="100%" preload="metadata">
-        <!-- TODO: Add your video file path here -->
-        <source src="static/videos/banner_video.mp4" type="video/mp4">
-      </video>
-      <!-- TODO: Replace with your video description -->
-      <h2 class="subtitle has-text-centered">
-        Aliquam vitae elit ullamcorper tellus egestas pellentesque. Ut lacus tellus, maximus vel lectus at, placerat pretium mi. Maecenas dignissim tincidunt vestibulum. Sed consequat hendrerit nisl ut maximus. 
-      </h2>
-    </div>
-  </div>
-</section>
-<!-- End teaser video -->
-
-<!-- Paper abstract -->
-<section class="section hero is-light">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-          <!-- TODO: Replace with your paper abstract -->
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ullamcorper tellus sed ante aliquam tempus. Etiam porttitor urna feugiat nibh elementum, et tempor dolor mattis. Donec accumsan enim augue, a vulputate nisi sodales sit amet. Proin bibendum ex eget mauris cursus euismod nec et nibh. Maecenas ac gravida ante, nec cursus dui. Vivamus purus nibh, placerat ac purus eget, sagittis vestibulum metus. Sed vestibulum bibendum lectus gravida commodo. Pellentesque auctor leo vitae sagittis suscipit.
-          </p>
+  <!-- Teaser -->
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <div class="image is-fullwidth">
+          <img src="static/images/method.png" alt="Overview of FWL-ToPM and FWLAug" class="paper-figure">
         </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- End paper abstract -->
+        <p class="figure-caption">
+          <strong>Overview.</strong>
+          During training, FWLAug augments full-waveform LiDAR (FWL) samples while preserving the time-of-flight waveform of each ray and the frustum geometry.
+          High-intensity patches are selected by pruning, reordered along a space-filling curve, and processed by the <strong>FWL-ToPM</strong> encoder, which merges redundant tokens before self-attention and unmerges them afterward.
+          Most of an FWL frame is noisy low-intensity background (bottom right), which is exactly what our pruning removes.
+        </p>
 
-
-<!-- Image carousel -->
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
-       <div class="item">
-        <!-- TODO: Replace with your research result images -->
-        <img src="static/images/carousel1.jpg" alt="First research result visualization" loading="lazy"/>
-        <!-- TODO: Replace with description of this result -->
-        <h2 class="subtitle has-text-centered">
-          First image description.
-        </h2>
-      </div>
-      <div class="item">
-        <!-- Your image here -->
-        <img src="static/images/carousel2.jpg" alt="Second research result visualization" loading="lazy"/>
-        <h2 class="subtitle has-text-centered">
-          Second image description.
-        </h2>
-      </div>
-      <div class="item">
-        <!-- Your image here -->
-        <img src="static/images/carousel3.jpg" alt="Third research result visualization" loading="lazy"/>
-        <h2 class="subtitle has-text-centered">
-         Third image description.
-       </h2>
-     </div>
-     <div class="item">
-      <!-- Your image here -->
-      <img src="static/images/carousel4.jpg" alt="Fourth research result visualization" loading="lazy"/>
-      <h2 class="subtitle has-text-centered">
-        Fourth image description.
-      </h2>
-    </div>
-  </div>
-</div>
-</div>
-</section>
-<!-- End image carousel -->
-
-
-
-
-<!-- Youtube video -->
-<section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <!-- Paper video. -->
-      <h2 class="title is-3">Video Presentation</h2>
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-          
-          <div class="publication-video">
-            <!-- TODO: Replace with your YouTube video ID -->
-            <iframe src="https://www.youtube.com/embed/JkaxUblCGz0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        <div class="highlight-stats">
+          <div class="highlight-stat">
+            <span class="stat-value">53.2 FPS</span>
+            <span class="stat-label">First real-time FWL Transformer</span>
+          </div>
+          <div class="highlight-stat">
+            <span class="stat-value">8&times;</span>
+            <span class="stat-label">Speedup over the prior state of the art</span>
+          </div>
+          <div class="highlight-stat">
+            <span class="stat-value">+9 pt</span>
+            <span class="stat-label">F1-mean gain (0.503 &rarr; 0.592)</span>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
-<!-- End youtube video -->
+  </section>
+  <!-- End teaser -->
 
 
-<!-- Video carousel -->
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title is-3">Another Carousel</h2>
-      <div id="results-carousel" class="carousel results-carousel">
-        <div class="item item-video1">
-          <!-- TODO: Add poster image for better preview -->
-          <video poster="" id="video1" controls muted loop height="100%" preload="metadata">
-            <!-- Your video file here -->
-            <source src="static/videos/carousel1.mp4" type="video/mp4">
-          </video>
+  <!-- Paper abstract -->
+  <section class="hero is-small is-light">
+    <div class="hero-body">
+      <div class="container">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <h2 class="title is-3">Abstract</h2>
+            <div class="content has-text-justified">
+              <p>
+                LiDAR is a critical sensor for autonomous driving and robotics, yet it remains vulnerable to adverse conditions such as fog, rain, transparent objects, and low-reflectance surfaces.
+                Full-waveform LiDAR (FWL) addresses these limitations by capturing the complete return waveform as a histogram, preserving rich reflection characteristics including multi-path echoes and weak signals.
+                While recent Transformer-based approaches have demonstrated promise on FWL data, two fundamental bottlenecks remain: high computational cost from redundant tokens in low-intensity background regions, and limited generalization due to scarce annotated training data.
+              </p>
+              <p>
+                We address both bottlenecks by exploiting the physical structure inherent to FWL data.
+                First, we propose <strong>FWL-ToPM</strong>, a token pruning and merging mechanism that leverages intensity distributions to selectively reduce tokens while retaining critical waveform content.
+                Second, we introduce <strong>FWLAug</strong>, a data augmentation framework designed as a regularization method that preserves waveform structure, retaining the Time-of-Flight waveform of each ray and the frustum geometry, to improve generalization to unseen scenes.
+                Evaluated on the Ghost-FWL benchmark, FWL-ToPM achieves over 8&times; speedup at real-time throughput alongside a nearly 9-point F1 gain over the prior state of the art, establishing the first real-time FWL Transformer that simultaneously improves accuracy.
+                FWLAug further improves performance on both the standard benchmark and an out-of-distribution test set of unseen scenes.
+                Together, these methods push FWL-based perception toward practical deployment.
+              </p>
+            </div>
+          </div>
         </div>
-        <div class="item item-video2">
-          <!-- TODO: Add poster image for better preview -->
-          <video poster="" id="video2" controls muted loop height="100%" preload="metadata">
-            <!-- Your video file here -->
-            <source src="static/videos/carousel2.mp4" type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-video3">
-          <!-- TODO: Add poster image for better preview -->
-          <video poster="" id="video3" controls muted loop height="100%" preload="metadata">
-            <!-- Your video file here -->
-            <source src="static/videos/carousel3.mp4" type="video/mp4">
-          </video>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- End video carousel -->
-
-
-
-
-
-
-<!-- Paper poster -->
-<section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title">Poster</h2>
-
-      <!-- TODO: Replace with your poster PDF -->
-      <iframe  src="static/pdfs/sample.pdf" width="100%" height="550">
-          </iframe>
-        
       </div>
     </div>
   </section>
-<!--End paper poster -->
+  <!-- End paper abstract -->
 
 
+  <!-- Contributions -->
+  <section class="hero is-small is-light section-white">
+    <div class="hero-body">
+      <div class="container">
+        <div class="columns is-centered">
+          <div class="column is-four-fifths">
+            <h2 class="title is-3">Contributions</h2>
+            <div class="content">
+              <ul class="contribution-list">
+                <li><strong>FWL-ToPM</strong>, a token pruning and merging mechanism tailored to FWL data. It prunes low-intensity background tokens and merges the remainder, achieving an 8&times; speedup (53.2 FPS) and an F1-mean improvement from 0.503 to 0.592: the first real-time FWL Transformer.</li>
+                <li>A finding that runs against image Transformers: pruning up to <strong>70% of tokens consistently improves</strong> FWL Transformer accuracy, because removing low-intensity background lets the model focus on object-relevant signals.</li>
+                <li><strong>FWLAug</strong>, a data augmentation framework for FWL data that expands training diversity while preserving the ToF waveform structure and frustum geometry that standard image and point cloud augmentations violate.</li>
+                <li>An <strong>out-of-distribution (OOD) test set</strong> captured entirely outside the Ghost-FWL recording locations, on which FWLAug achieves the best F1-mean among all compared configurations.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End contributions -->
 
-<!--BibTex citation -->
+
+  <!-- Method: FWL-ToPM -->
+  <section class="hero is-small is-light">
+    <div class="hero-body">
+      <div class="container">
+        <div class="columns is-centered">
+          <div class="column is-four-fifths">
+            <h2 class="title is-3">FWL-ToPM: Intensity-Guided Token Pruning and Merging</h2>
+            <div class="content has-text-justified">
+              <p>
+                Unlike camera images, FWL data contains spatially sparse, high-intensity peaks, while most of the volume is low-intensity signal that contributes little to recognition.
+                Uniform ViT tokenization therefore produces many uninformative tokens: computation is wasted on them, and they dilute the important high-intensity regions.
+                Token reduction methods designed for images assume that information is spread across the 2D plane, so they are a poor fit for FWL.
+              </p>
+
+              <h3 class="title is-5">Intensity-Based Pruning</h3>
+              <p>
+                Each 3D patch is scored by its maximum signal intensity.
+                The lowest-scoring fraction &rho;<sub>low</sub> of patches is removed before tokenization, and only the remaining high-intensity patches are fed to the encoder.
+                Pruned regions are excluded from the loss during training and predicted as <em>Noise</em> at inference.
+                Pruning changes only which tokens are processed, not the weights, so it can be applied to a pretrained model without retraining.
+              </p>
+
+              <h3 class="title is-5">Sparse-Aware Token Merging</h3>
+              <p>
+                After pruning, the remaining tokens form a <em>sparse and irregular</em> subset of the 3D patch grid, where grid-based destination-token sampling breaks down because many regions contain no tokens at all.
+                We serialize the surviving tokens along a <strong>space-filling curve</strong> (Morton order), which keeps spatially close patches close in the 1D sequence.
+                We then pick destination tokens at equal intervals along that sequence, so they are spread across the 3D volume.
+                Source tokens are merged into their most similar destination token (cosine similarity) before self-attention, and unmerged afterward to stay consistent with the residual connections.
+              </p>
+            </div>
+
+            <div class="figure-block">
+              <img src="static/images/merging_vis.png" alt="Visualization of token merging on two Ghost-FWL scenes" class="paper-figure" loading="lazy">
+              <p class="figure-caption">
+                <strong>Token merging on real Ghost-FWL scenes.</strong>
+                Color indicates patch intensity (red: high, white: low). After low-intensity background tokens are pruned, similar source tokens are merged into destination tokens.
+                The token count drops, while the merged tokens keep the spatial structure of reflected objects.
+              </p>
+            </div>
+
+            <div class="figure-block">
+              <img src="static/images/waveforms.png" alt="Waveforms along single rays compared with Top-3 peak extraction" class="paper-figure" loading="lazy">
+              <p class="figure-caption">
+                <strong>Why patch-level pruning instead of Top-<em>K</em> peaks?</strong>
+                Waveforms along single rays in Ghost-FWL Scene 001 (left) and Scene 007 (right).
+                Conventional multi-return LiDAR keeps only the Top-3 peaks, discarding an Object return (Scene 001) and a Glass return (Scene 007) when strong Ghost returns are on the same ray.
+                Both returns lie above our pruning threshold (dashed line), so FWL-ToPM keeps them along with their full waveforms.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End method: FWL-ToPM -->
+
+
+  <!-- Method: FWLAug -->
+  <section class="hero is-small is-light section-white">
+    <div class="hero-body">
+      <div class="container">
+        <div class="columns is-centered">
+          <div class="column is-four-fifths">
+            <h2 class="title is-3">FWLAug: Physics-Aware Augmentation</h2>
+            <div class="content has-text-justified">
+              <p>
+                Each per-pixel histogram in an FWL frame encodes the temporal response of one laser ray, and together the rays form a frustum with the LiDAR at its apex.
+                Any FWL augmentation must therefore (1) preserve the waveform of each ray along the time axis and (2) stay consistent with the frustum geometry.
+                Standard image and point cloud augmentations violate both.
+                FWLAug is designed as a regularizer that respects these constraints. It increases training diversity and the frequency of minority classes such as glass, but it does not attempt to simulate full light transport.
+              </p>
+              <ul>
+                <li>
+                  <strong>FWLShiftMix</strong> shifts objects along their LiDAR ray directions by &Delta;d &sim; U(&minus;3, 15) m, shifting each waveform along the ToF axis.
+                  It then fills the resulting blank region with complete waveforms from a glass-containing region of another scene, rather than leaving unrealistic zeros.
+                </li>
+                <li>
+                  <strong>FWLCutMix</strong> extends CutMix to FWL. It crops a region from a source frame, preferring one that contains a minority class (glass), and pastes the entire temporal waveform of each pixel into a destination frame.
+                </li>
+              </ul>
+            </div>
+
+            <div class="figure-block">
+              <img src="static/images/augmentation.jpg" alt="Illustration of FWLShiftMix and FWLCutMix" class="paper-figure" loading="lazy">
+              <p class="figure-caption">
+                <strong>Illustration of FWLAug.</strong>
+                <em>FWLShiftMix</em> (top): an object in Sample 1 is shifted away from the LiDAR, creating a blank region &Omega;<sub>blank</sub>, which is filled with a glass-containing region &Omega;<sub>src</sub> from Sample 2.
+                <em>FWLCutMix</em> (bottom): a crop region containing glass is selected from a source frame and pasted into a destination frame.
+                Both methods favor glass-containing regions to reduce class imbalance.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End method: FWLAug -->
+
+
+  <!-- Results -->
+  <section class="hero is-small is-light">
+    <div class="hero-body">
+      <div class="container">
+        <div class="columns is-centered">
+          <div class="column is-four-fifths">
+            <h2 class="title is-3">Results</h2>
+
+            <div class="content has-text-justified">
+              <h3 class="title is-5">Accuracy and Speed</h3>
+              <p>
+                FWL-ToPM reaches an F1-mean of <strong>0.592 at 53.2 FPS</strong>: about 9 points more accurate and more than 8&times; faster than prior FWL Transformers.
+                Our pruning and merging each outperform their image-based counterparts (DynamicViT and ToMe) on their own, and combining them gives the best F1&ndash;FPS trade-off.
+                Pruning alone keeps high accuracy up to about 20 FPS, and merging alone limits accuracy loss but tops out around 18 FPS. Combined, they exceed 50 FPS without losing accuracy.
+              </p>
+            </div>
+
+            <div class="fwltable-card">
+              <div class="table-container">
+                <table class="table is-bordered is-striped is-hoverable is-fullwidth fwltable__table">
+                  <caption class="fwltable__caption">
+                    <strong>Comparison with FWL-based methods and ablation of token pruning and merging.</strong>
+                    For FWL-ToPM, &rho;<sub>low</sub> = 0.7 and &rho;<sub>m</sub> = 0.9. All methods are trained without FWLAug.
+                  </caption>
+                  <thead>
+                    <tr>
+                      <th>Method</th><th>Pruning</th><th>Merging</th><th>F1-mean &uarr;</th><th>FPS &uarr;</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Scheuble et al. (ICCV 2025)</td><td>&ndash;</td><td>&ndash;</td><td>0.497</td><td>1.97</td></tr>
+                    <tr><td>Ikeda et al. (CVPR 2026)</td><td>&ndash;</td><td>&ndash;</td><td>0.503</td><td>6.54</td></tr>
+                    <tr class="fwltable__divider"><td colspan="5"></td></tr>
+                    <tr><td>Ours w/o FWL-ToPM</td><td>&ndash;</td><td>&ndash;</td><td>0.555</td><td>2.01</td></tr>
+                    <tr class="fwltable__divider"><td colspan="5"></td></tr>
+                    <tr><td>DynamicViT</td><td><span class="fwltable-check">&#10003;</span></td><td>&ndash;</td><td>0.480</td><td>20.0</td></tr>
+                    <tr><td>Ours w/ Pruning</td><td><span class="fwltable-check">&#10003;</span></td><td>&ndash;</td><td>0.591</td><td>20.3</td></tr>
+                    <tr class="fwltable__divider"><td colspan="5"></td></tr>
+                    <tr><td>ToMe</td><td>&ndash;</td><td><span class="fwltable-check">&#10003;</span></td><td>0.543</td><td>5.24</td></tr>
+                    <tr><td>Ours w/ Merging</td><td>&ndash;</td><td><span class="fwltable-check">&#10003;</span></td><td>0.565</td><td>18.0</td></tr>
+                    <tr class="fwltable__divider"><td colspan="5"></td></tr>
+                    <tr class="is-ours"><td><strong>Ours w/ FWL-ToPM</strong></td><td><span class="fwltable-check">&#10003;</span></td><td><span class="fwltable-check">&#10003;</span></td><td><strong>0.592</strong></td><td><strong>53.2</strong></td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="figure-block">
+              <img src="static/images/fps_f1.png" alt="F1-mean versus FPS trade-off" class="paper-figure" loading="lazy">
+              <p class="figure-caption">
+                <strong>(Left)</strong> F1-mean vs. FPS trade-off for all compared methods.
+                <strong>(Right)</strong> F1-mean and FPS when pruning and merging are applied to a pretrained model without additional training (w/o TR).
+                &rho;<sub>low</sub> and &rho;<sub>m</sub> are varied from 0 to 0.9. For pruning+merging, &rho;<sub>low</sub> is fixed to 0.7 while &rho;<sub>m</sub> varies.
+                Without retraining, merging alone keeps F1-mean above 0.5 up to about 20 FPS.
+              </p>
+            </div>
+
+            <div class="content has-text-justified">
+              <h3 class="title is-5">Generalization with FWLAug</h3>
+              <p>
+                Full FWLAug improves OOD F1-mean by <strong>4.6 points</strong> over the baseline and Glass F1 by <strong>8.4 points</strong>, showing better generalization to unseen scenes.
+                FWLShiftMix contributes most to in-distribution accuracy, while the combination of both augmentations drives the OOD improvement.
+              </p>
+            </div>
+
+            <div class="fwltable-card">
+              <div class="table-container">
+                <table class="table is-bordered is-striped is-hoverable is-fullwidth fwltable__table">
+                  <caption class="fwltable__caption">
+                    <strong>Ablation study of FWLAug</strong> on Ghost-FWL and on our OOD test set captured at a location entirely separate from Ghost-FWL.
+                    <strong>Bold</strong>: best, <u>underline</u>: second best.
+                  </caption>
+                  <thead>
+                    <tr>
+                      <th rowspan="2">Method</th><th rowspan="2">FWLCutMix</th><th rowspan="2">FWLShiftMix</th>
+                      <th colspan="2">Ghost-FWL</th><th colspan="2">OOD Test</th>
+                    </tr>
+                    <tr>
+                      <th>F1-mean</th><th>Glass</th><th>F1-mean</th><th>Glass</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Ours w/o Aug</td><td><span class="fwltable-cross">&#10007;</span></td><td><span class="fwltable-cross">&#10007;</span></td><td>0.592</td><td>0.352</td><td>0.406</td><td>0.491</td></tr>
+                    <tr class="fwltable__divider"><td colspan="7"></td></tr>
+                    <tr><td>Ours w/ FWLAug</td><td><span class="fwltable-cross">&#10007;</span></td><td><span class="fwltable-check">&#10003;</span></td><td><strong>0.622</strong></td><td><u>0.376</u></td><td>0.425</td><td>0.494</td></tr>
+                    <tr class="is-ours"><td>Ours w/ FWLAug</td><td><span class="fwltable-check">&#10003;</span></td><td><span class="fwltable-check">&#10003;</span></td><td><u>0.617</u></td><td><strong>0.385</strong></td><td><strong>0.452</strong></td><td><u>0.575</u></td></tr>
+                    <tr><td>Ours w/ FWLAug</td><td><span class="fwltable-check">&#10003;</span></td><td><span class="fwltable-cross">&#10007;</span></td><td>0.586</td><td>0.315</td><td><u>0.434</u></td><td><strong>0.606</strong></td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="content has-text-justified">
+              <h3 class="title is-5">Qualitative Results</h3>
+              <p>
+                Red, green, and blue indicate <em>Ghost</em>, <em>Object</em>, and <em>Glass</em>, respectively.
+                Our model classifies Glass and Ghost regions more accurately than prior FWL methods, especially where Object and Ghost overlap and on glass surfaces that produce only weak peaks.
+                Glass behind other glass remains difficult. FWLAug partially improves these under-represented configurations.
+              </p>
+            </div>
+
+            <div class="figure-block figure-narrow">
+              <img src="static/images/qualitative.jpg" alt="Qualitative comparison of classification results" class="paper-figure" loading="lazy">
+              <p class="figure-caption">
+                <strong>Qualitative comparison</strong> on Ghost-FWL test scenes 002, 007, 009 and on our OOD test set.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End results -->
+
+
+  <!-- OOD test set -->
+  <section class="hero is-small is-light section-white">
+    <div class="hero-body">
+      <div class="container">
+        <div class="columns is-centered">
+          <div class="column is-four-fifths">
+            <h2 class="title is-3">OOD Test Set</h2>
+            <div class="content has-text-justified">
+              <p>
+                To evaluate generalization to unseen scenes, we built a new FWL test set at a location entirely separate from <a href="https://keio-csg.github.io/Ghost-FWL/" target="_blank">Ghost-FWL</a>.
+                The data were collected with the same FWL sensor platform and acquisition configuration as Ghost-FWL and annotated with the same protocol (<em>Ghost</em>, <em>Object</em>, <em>Glass</em>, <em>Noise</em>).
+                As a result, the evaluation isolates changes in scene distribution from changes in hardware or labeling.
+              </p>
+              <ul>
+                <li><strong>500 frames</strong> from <strong>10 viewpoints</strong> (50 frames each), captured outdoors in daytime.</li>
+                <li>A seven-story building clad in glass on all four sides, with additional glass around elevators and connecting corridors: <strong>over 300 glass windows</strong> in total.</li>
+                <li>Includes scenes with multiple spatially separated glass regions, a configuration not present in Ghost-FWL.</li>
+              </ul>
+              <p>
+                The OOD test set will be released publicly. <!-- TODO: Add the download link here and in the header button -->
+              </p>
+            </div>
+
+            <div class="figure-block figure-narrow">
+              <img src="static/images/ood_test_set.jpg" alt="Our OOD test set compared with Ghost-FWL scenes" class="paper-figure" loading="lazy">
+              <p class="figure-caption">
+                <strong>Our OOD test set</strong> (left) compared with Ghost-FWL scenes (right).
+                Annotations: Ghost (red), Object (green), Glass (blue), Noise. Blue markers show the LiDAR positions during acquisition. The RGB images show the capture locations.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End OOD test set -->
+
+
+  <!-- Acknowledgements -->
+  <section class="hero is-small is-light">
+    <div class="hero-body">
+      <div class="container">
+        <div class="columns is-centered">
+          <div class="column is-four-fifths">
+            <h2 class="title is-3">Acknowledgements</h2>
+            <div class="content has-text-justified">
+              <p>
+                We gratefully acknowledge Takahiro Kado, Ibuki Fujioka, and Taro Beppu at Sony Semiconductor Solutions for their generous support and for providing the Sony LiDAR sensor used in this work.
+                The Sony LiDAR system played an essential role in enabling this research.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End acknowledgements -->
+
+
+  <!--BibTex citation -->
   <section class="section" id="BibTeX">
     <div class="container is-max-desktop content">
       <div class="bibtex-header">
@@ -480,41 +608,33 @@
           <span class="copy-text">Copy</span>
         </button>
       </div>
-      <pre id="bibtex-code"><code>@article{YourPaperKey2024,
-  title={Your Paper Title Here},
-  author={First Author and Second Author and Third Author},
-  journal={Conference/Journal Name},
-  year={2024},
-  url={https://your-domain.com/your-project-page}
+<pre id="bibtex-code"><code>@inproceedings{oishi2026fwltopm,
+    author    = {Oishi, Kotaro and Ikeda, Kazuma and Hara, Ryosei and Yoshida, Ryo and Isogawa, Mariko and Yoshioka, Kentaro},
+    title     = {Towards Real-Time Full-Waveform LiDAR Transformers via Intensity-Guided Token Reduction and Physics-Aware Augmentation},
+    booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+    year      = {2026}
 }</code></pre>
     </div>
-</section>
-<!--End BibTex citation -->
+  </section>
+  <!--End BibTex citation -->
+  </main>
 
 
-  <footer class="footer">
-  <div class="container">
-    <div class="columns is-centered">
-      <div class="column is-8">
-        <div class="content">
-
-          <p>
-            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
-            You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
-            Commons Attribution-ShareAlike 4.0 International License</a>.
-          </p>
-
+  <footer class="footer is-light">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+              You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+              Commons Attribution-ShareAlike 4.0 International License</a>.
+            </p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</footer>
+  </footer>
 
-<!-- Statcounter tracking code -->
-  
-<!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
-
-    <!-- End of Statcounter Code -->
-
-  </body>
-  </html>
+</body>
+</html>

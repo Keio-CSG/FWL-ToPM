@@ -302,13 +302,24 @@ body {
   transform: scale(1.2);
 }
 
-.eql-cntrb { 
+.eql-cntrb {
   font-size: 0.875rem;
   color: var(--text-light);
   font-style: italic;
 }
 
 /* Section Titles */
+h2 {
+  text-align: center !important;
+}
+
+h2.title,
+h2.subtitle,
+h2.title.is-3 {
+  width: 100%;
+  text-align: center !important;
+}
+
 .title.is-3 {
   font-family: 'Inter', sans-serif !important;
   font-weight: 700 !important;
@@ -348,6 +359,11 @@ body {
   padding: 3rem 1.5rem;
 }
 
+.footer.is-light {
+  background: #ffffff !important;
+  border-top: 1px solid var(--border-color);
+}
+
 .footer .content {
   color: var(--text-secondary);
   line-height: 1.7;
@@ -382,10 +398,16 @@ code {
 }
 
 /* BibTeX Section Improvements */
+#BibTeX {
+  background: var(--background-secondary);
+}
+
 .bibtex-header {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 0.75rem;
   margin-bottom: 1rem;
 }
 
@@ -603,54 +625,59 @@ code {
   .hero-body {
     padding: 2rem 1rem;
   }
-  
+
   .publication-header .hero-body {
     padding: 3rem 1rem 2rem;
   }
-  
+
   .publication-title {
     font-size: 2.5rem !important;
     line-height: 1.2 !important;
     margin-bottom: 1.5rem !important;
   }
-  
+
   .publication-authors {
     font-size: 1rem !important;
   }
-  
+
   .button {
     margin: 0.25rem !important;
     font-size: 0.875rem !important;
     padding: 0.75rem 1rem !important;
   }
-  
+
   .more-works-container {
     bottom: 2rem;
     right: 1rem;
     top: auto;
   }
-  
+
   .more-works-btn {
     padding: 0.6rem 1rem;
     font-size: 0.8rem;
   }
-  
+
   .more-works-dropdown {
     width: calc(100vw - 2rem);
     right: -1rem;
     bottom: calc(100% + 0.5rem);
     top: auto;
   }
-  
+
+  .scroll-to-top {
+    bottom: 6.5rem;
+    right: 1rem;
+  }
+
   .results-carousel .item {
     margin: 0.5rem;
     padding: 1rem;
   }
-  
+
   .teaser .hero-body {
     padding: 1rem;
   }
-  
+
   .content.has-text-justified {
     font-size: 1rem;
   }
@@ -660,23 +687,23 @@ code {
   .publication-title {
     font-size: 2rem !important;
   }
-  
+
   .hero-body {
     padding: 1.5rem 0.75rem;
   }
-  
+
   .more-works-container {
     position: fixed;
     bottom: 2rem;
     right: 1rem;
     z-index: 1000;
   }
-  
+
   .more-works-btn {
     padding: 0.5rem 0.75rem;
     font-size: 0.75rem;
   }
-  
+
   .more-works-dropdown {
     position: absolute;
     bottom: calc(100% + 0.5rem);
@@ -684,12 +711,17 @@ code {
     width: calc(100vw - 2rem);
     max-width: 90vw;
   }
-  
+
+  .scroll-to-top {
+    bottom: 6rem;
+    right: 1rem;
+  }
+
   .link-block {
     display: block;
     margin-bottom: 0.5rem;
   }
-  
+
   .button {
     width: 100%;
     justify-content: center;
@@ -701,7 +733,7 @@ code {
   .hero-body {
     padding: 3rem 2rem;
   }
-  
+
   .publication-header .hero-body {
     padding: 4rem 2rem 3rem;
   }
@@ -731,17 +763,50 @@ a:focus {
   outline-offset: 2px;
 }
 
+/* Result figure captions */
+.twofig-caption {
+  margin-top: 0.6rem;
+  text-align: center;
+  font-size: 1.15rem;
+  line-height: 1.35;
+}
+
+.fwltable-check {
+  color: #16a34a;
+  font-weight: 700;
+}
+
+.fwltable-cross {
+  color: #dc2626;
+  font-weight: 700;
+}
+
+.fwltable__table td:first-child a {
+  margin-left: 0.15em;
+}
+
+.content .fwltable__ref {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  line-height: 1.12 !important;
+}
+
+/* White background override for selected chapter sections */
+.hero.is-light.section-white {
+  background-color: #ffffff;
+}
+
 
 /* Print styles */
 @media print {
   .more-works-container {
     display: none;
   }
-  
+
   .hero, .section {
     animation: none;
   }
-  
+
   .button {
     background: transparent !important;
     color: var(--text-primary) !important;
